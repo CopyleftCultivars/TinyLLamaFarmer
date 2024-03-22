@@ -31,7 +31,7 @@ This guide will walk you through installing the MLC Chat demo app and replacing 
     * Go to Hugging Face Hub (Hugging Face Account: [https://huggingface.co/join](https://huggingface.co/join)) and sign in or create a free account.
     * Search for the model named "Copyleftcultivars/Gemma2B-NaturalFarmerV3".
     * Click on the model name and navigate to the "Files & Versions" tab.
-    * Download the model file in GGUF format (ensure it's compatible with MLC LLM).
+    * Download the model file in MLC LLM specific format (ensure it's compatible with MLC LLM).
 
 **Part 2: Sideloading the MLC Chat Demo APK (Android requires enabling unknown sources)**
 
@@ -46,7 +46,9 @@ This guide will walk you through installing the MLC Chat demo app and replacing 
 ** (This part requires some technical knowledge)**
 
 1. **Identify Model Storage Location:** 
- Unfortunately, the current MLC Chat demo doesn't have a built-in model management feature yet. You'll need to locate the directory where the pre-loaded Gemma2B model is stored on your phone. 
+ Unfortunately, the current MLC Chat demo doesn't have a built-in model management feature yet. You'll need to locate the directory where the pre-loaded Gemma2B model is stored on your phone.
+
+[STEPS TO LOCATE DIRECTORY IN SAMSUNG GALAXY S23 ULTRA]
 
  Refer to the MLC LLM documentation ([https://llm.mlc.ai/](https://llm.mlc.ai/)) for troubleshooting tips on finding model storage locations. It might involve using file explorer apps that can access system directories.
 
@@ -54,7 +56,7 @@ This guide will walk you through installing the MLC Chat demo app and replacing 
 
 3. **Copy Downloaded Model:** Copy the downloaded Copyleftcultivars/Gemma2B-NaturalFarmerV3 model (GGUF format) to the same directory where you found the pre-loaded Gemma2B model files.
 
-4. **Verify Model Replacement:** Launch the MLC Chat app. There currently isn't a visual indicator within the app to confirm the model swap. However, you can try interacting with the chat and see if the responses differ from the pre-loaded Gemma2B. 
+4. **Verify Model Replacement:** Launch the MLC Chat app. There currently isn't a visual indicator within the app to confirm the model swap. The Model will show up on the list as the Gemma2B model, or may show the specific "NaturalFarmer" name. However, you can try interacting with the chat and see if the responses differ from the pre-loaded Gemma2B. A good test question is to explain IMO in the context of growing corn. If it answers regarding Indigenous Micro-Organisms, then you are successful and this is the correct Natural Farmer model. Good job! Enjoy!
 
 **Important Notes:**
 
