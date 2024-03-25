@@ -1,4 +1,6 @@
 # TinyLLamaFarmer
+**CURRENTLY IN TESTING AND DOCUMENTATION, SO PLEASE DO NOT USE THIS WALKTHROUGH YET!**
+
 An on-device local, off-the-grid, Natural Farming AI Agriculture Assistant, to democratize access to farming knowledge where it's needed the most.
 
 Created by Caleb DeLeeuw, as a submission to BackDropBuild Hackathon and working for Copyleft Cultivars, a nonprofit.
