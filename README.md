@@ -1,5 +1,6 @@
 # TinyLLamaFarmer
 **CURRENTLY IN TESTING AND DOCUMENTATION, SO PLEASE DO NOT USE THIS WALKTHROUGH YET UNLESS YOU ARE FAMILIAR WITH MLC COMPILATION ALREADY!**
+Currently updated models are in alpha testing as of 5/4/24
 
 An on-device local, off-the-grid, Natural Farming AI Agriculture Assistant, to democratize access to farming knowledge where it's needed the most.
 
