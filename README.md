@@ -58,7 +58,7 @@ make LLAMA_NATIVE=1
 
 1. Go to Hugging Face Hub (https://huggingface.co/join) and sign in or create a free account
 2. Navigate to "CopyleftCultivars/llama-3.1-natural-farmer-Q8_0-GGUF"
-3. Download the GGUF model file
+3. Download the GGUF model file (must be done with data or internet connection, but will stay downloaded after that until the app is fully shut down.)
 
 If downloading directly through Termux:
 ```bash
