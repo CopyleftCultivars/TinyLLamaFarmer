@@ -33,7 +33,7 @@ This guide will walk you through installing llama.cpp and running the new Copyle
 - Termux (from F-Droid)
 - Hugging Face account (free) - https://huggingface.co/join
 
-## Part 1: Setting Up Termux and llama.cpp
+## Part 1: Setting Up Termux and llama.cpp (Should be done with internet access prior to when you intend to use the chatbot)
 
 1. Install F-Droid and Termux:
    - Download F-Droid from f-droid.org
@@ -54,32 +54,51 @@ cd llama.cpp
 make LLAMA_NATIVE=1
 ```
 
-## Part 2: Downloading the llama-3.1-natural-farmer Model
+To incorporate the advice in (B) into the guide (A), the following sections should be updated:
 
-1. Go to Hugging Face Hub (https://huggingface.co/join) and sign in or create a free account
-2. Navigate to "CopyleftCultivars/llama-3.1-natural-farmer-Q8_0-GGUF"
-3. Download the GGUF model file (must be done with data or internet connection, but will stay downloaded after that until the app is fully shut down.)
+---
 
-If downloading directly through Termux:
+### Part 2: Downloading the llama-3.1-natural-farmer Model (Should be done with internet access prior to when you intend to use the chatbot)
+
+**Update Step 3 as follows:**
+
+1. Go to Hugging Face Hub (https://huggingface.co/join) and sign in or create a free account.
+2. Navigate to "CopyleftCultivars/llama-3.1-natural-farmer-Q8_0-GGUF."
+3. Download the GGUF model file. You can download it directly on your phone through your browser to a known location like `Downloads`, or by using Termux to download it to a specific directory:
+
+**For Termux download:**
 ```bash
-cd ~/llama.cpp/models
-wget [GGUF_MODEL_URL]
+# In Termux, create a models directory and download the model
+cd ~/llama.cpp
+mkdir models
+cd models
+wget [GGUF_MODEL_URL] -O llama-3.1-natural-farmer.gguf
 ```
 
-Note: This model is already quantized to Q8_0 format for optimal quality while maintaining reasonable resource usage.
+---
 
-## Part 3: Running the Model
+### Part 3: Running the Model
 
-1. Basic setup to run the model:
+**Important**: Grant Termux access to external storage by running:
+```bash
+termux-setup-storage
+```
+
+**Basic setup to run the model:**
 ```bash
 cd ~/llama.cpp
-./main -m models/llama-3.1-natural-farmer-q8_0.gguf --temp 0.7 --ctx-size 4096 --threads 4
+./main -m /path/to/your/model/llama-3.1-natural-farmer.gguf --temp 0.7 --ctx-size 4096 --threads 4
 ```
 
-2. For interactive chat mode:
-```bash
-./main -m models/llama-3.1-natural-farmer-q8_0.gguf --temp 0.7 --ctx-size 4096 --threads 4 --interactive
-```
+Replace `/path/to/your/model/llama-3.1-natural-farmer.gguf` with the actual path where the model was saved, such as:
+
+- If downloaded to `llama.cpp/models`: `models/llama-3.1-natural-farmer.gguf`
+- If downloaded to `Downloads`: `/storage/emulated/0/Download/llama-3.1-natural-farmer.gguf`
+- If saved to a Termux directory: `~/storage/downloads/llama-3.1-natural-farmer.gguf`
+
+This ensures Termux can access files outside its app directory.
+
+Note: This model is already quantized to Q8_0 format for optimal quality while maintaining reasonable resource usage.
 
 Recommended parameters for this model:
 - `--ctx-size 4096`: LLaMA 3.1 supports larger context
