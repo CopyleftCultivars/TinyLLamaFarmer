@@ -1,5 +1,6 @@
 # TinyLLamaFarmer
 // 5/4/24: Currently updated models are in alpha testing as of 5/4/24 //
+
 // 10/29/24: Models have reached beta testing and third party review. Additional models can be seen on your org hugging face hub /copyleftcultivars //
 
 An on-device local, off-the-grid, Natural Farming AI Agriculture Assistant, to democratize access to farming knowledge where it's needed the most.
