@@ -10,7 +10,7 @@ An on-device local, off-the-grid, Natural Farming AI Agriculture Assistant, to d
 
 Created by Caleb DeLeeuw, as a submission to BackDropBuild Hackathon and working for Copyleft Cultivars, a nonprofit.
 
-The .sx file Webapp cin the repo is for the advanced chatbot user interface, which may be easier to interact with, but which has very limited testing (instructions at bottom of this page.)
+The .tsx file webapp shows examples of how the user interface in the repo can be configured, which may make it easier to implement, but which is not actually needed to get this working.
 
 On-device as detailed below is currently only available on Samsung Galaxy S23 series, and some other Smartphones with Snapdragon 8 Gen 2 chip, as well as possibly working on any other device on which MLC LLM's MLC Chat Demo APK runs.
 
