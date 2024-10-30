@@ -16,7 +16,7 @@ On-device as detailed below is currently only available on Samsung Galaxy S23 se
 
 We welcome contributions, PRs, and comments. We also encourage you to reach out to copyleftcultivars@gmail.com
 
-Consider supporting Copyleft Cultivars, a nonprofit, through Patreon. [LINK]
+Consider supporting Copyleft Cultivars, a nonprofit, through Patreon. [LINK](https://www.patreon.com/c/CopyleftCultivarsNonprofit)
 
 # Setting Up llama.cpp with CopyleftCultivars/llama-3.1-natural-farmer on Android
 
