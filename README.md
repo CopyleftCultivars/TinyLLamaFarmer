@@ -69,4 +69,4 @@ This guide will walk you through installing the MLC Chat demo app and replacing 
 * Ensure the downloaded Copyleftcultivars/Gemma2B-NaturalFarmerV3 model is compatible with MLC LLM's format requirements. Incompatible models might not function correctly.
 * The MLC Chat app is still under development, and this method might change in future updates with official model management features.
 
-For troubleshooting or further assistance, refer to the MLC LLM documentation and GitHub repository ([https://github.com/mlc-ai/mlc-llm](https://github.com/mlc-ai/mlc-llm)) for support resources.
+For troubleshooting or further assistance, refer to the MLC LLM documentation and GitHub repository ([https://github.com/mlc-ai/mlc-llm](https://github.com/mlc-ai/mlc-llm)) for support resources. You can also email CopyleftCultivars@gmail.com with any questions or feedback.
