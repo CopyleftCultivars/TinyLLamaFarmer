@@ -1,12 +1,14 @@
 # TinyLLamaFarmer
-**CURRENTLY IN TESTING AND DOCUMENTATION, SO PLEASE DO NOT USE THIS WALKTHROUGH YET UNLESS YOU ARE FAMILIAR WITH MLC COMPILATION ALREADY!**
-Currently updated models are in alpha testing as of 5/4/24
+// 5/4/24: Currently updated models are in alpha testing as of 5/4/24 //
+// 10/29/24: Models have reached beta testing and third party review. Additional models can be seen on your org hugging face hub /copyleftcultivars //
 
 An on-device local, off-the-grid, Natural Farming AI Agriculture Assistant, to democratize access to farming knowledge where it's needed the most.
 
 Created by Caleb DeLeeuw, as a submission to BackDropBuild Hackathon and working for Copyleft Cultivars, a nonprofit.
 
-Currently only available on Samsung Galaxy S23 series, and some other Smartphones with Snapdragon 8 Gen 2 chip, as well as possibly working on any other device on which MLC LLM's MLC Chat Demo APK runs.
+Webapp in the repo is a related Natural Farming Chat webapp, designed to run on hugging face spaces or similar docker based webapp platform, which has great UI for mobile use and may be more easily deployable for some contexts.
+
+On-device as detailed below is currently only available on Samsung Galaxy S23 series, and some other Smartphones with Snapdragon 8 Gen 2 chip, as well as possibly working on any other device on which MLC LLM's MLC Chat Demo APK runs.
 
 We welcome contributions, PRs, and comments. We also encourage you to reach out to copyleftcultivars@gmail.com
 
