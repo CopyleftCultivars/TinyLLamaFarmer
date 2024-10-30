@@ -18,14 +18,14 @@ We welcome contributions, PRs, and comments. We also encourage you to reach out 
 
 Consider supporting Copyleft Cultivars, a nonprofit, through Patreon. [LINK]
 
-# Setting Up llama.cpp with Copyleftcultivars/Gemma2B-NaturalFarmerV3 on Android
+# Setting Up llama.cpp with CopyleftCultivars/llama-3.1-natural-farmer on Android
 
-=This guide will walk you through installing llama.cpp and running the Copyleftcultivars/Gemma2B-NaturalFarmerV3 model from Hugging Face Hub on your Android device.
+This guide will walk you through installing llama.cpp and running the new CopyleftCultivars/llama-3.1-natural-farmer model from Hugging Face Hub on your Android device.
 
 ## Requirements:
 
-- Android device with at least 6GB RAM (8GB+ recommended)
-- At least 4GB free storage space
+- Android device with at least 8GB RAM (12GB+ recommended)
+- At least 8GB free storage space (the Q8_0 quantized model is larger than Q4 models)
 - Computer with internet access (optional)
 
 ## Software:
@@ -54,12 +54,11 @@ cd llama.cpp
 make LLAMA_NATIVE=1
 ```
 
-## Part 2: Downloading the Gemma2B-NaturalFarmerV3 Model
+## Part 2: Downloading the llama-3.1-natural-farmer Model
 
-1. Go to Hugging Face Hub (https://huggingface.co/join) and sign in or create a free account.
-2. Search for the model named "Copyleftcultivars/Gemma2B-NaturalFarmerV3"
-3. Click on the model name and navigate to the "Files & Versions" tab
-4. Download the GGUF version of the model
+1. Go to Hugging Face Hub (https://huggingface.co/join) and sign in or create a free account
+2. Navigate to "CopyleftCultivars/llama-3.1-natural-farmer-Q8_0-GGUF"
+3. Download the GGUF model file
 
 If downloading directly through Termux:
 ```bash
@@ -67,18 +66,26 @@ cd ~/llama.cpp/models
 wget [GGUF_MODEL_URL]
 ```
 
+Note: This model is already quantized to Q8_0 format for optimal quality while maintaining reasonable resource usage.
+
 ## Part 3: Running the Model
 
 1. Basic setup to run the model:
 ```bash
 cd ~/llama.cpp
-./main -m models/gemma2b-naturalfarmer.gguf --temp 0.7 --ctx-size 2048 --threads 4
+./main -m models/llama-3.1-natural-farmer-q8_0.gguf --temp 0.7 --ctx-size 4096 --threads 4
 ```
 
 2. For interactive chat mode:
 ```bash
-./main -m models/gemma2b-naturalfarmer.gguf --temp 0.7 --ctx-size 2048 --threads 4 --interactive
+./main -m models/llama-3.1-natural-farmer-q8_0.gguf --temp 0.7 --ctx-size 4096 --threads 4 --interactive
 ```
+
+Recommended parameters for this model:
+- `--ctx-size 4096`: LLaMA 3.1 supports larger context
+- `--temp 0.7`: Good balance of creativity and consistency
+- `--threads 4`: Adjust based on your device
+- `--repeat-penalty 1.1`: Helps prevent repetition
 
 ## Verify Model Installation
 
@@ -91,27 +98,24 @@ What is IMO in the context of growing corn?
 
 ## Important Notes:
 
-- This process is officially supported by llama.cpp and is regularly tested on Android devices
+- This model is larger and may use more resources than smaller models
+- The Q8_0 quantization provides high quality but requires more RAM
 - Monitor your device's temperature during extended use
-- Consider using a cooling solution for longer sessions
 - Keep your device plugged in when running the model
-- The model may take a few seconds to load and respond, depending on your device's capabilities
+- First response may take longer due to model size and initialization
 
 ## Optimizing Performance
 
-If you experience slow performance or memory issues:
+If you experience performance issues:
 
 1. Try adjusting these parameters:
 ```bash
 --threads 2        # Reduce thread count
---ctx-size 1024    # Reduce context size
---batch-size 512   # Adjust batch size
+--ctx-size 2048    # Reduce context size if memory limited
+--batch-size 512   # Adjust batch size for throughput
 ```
 
-2. Quantize the model for better performance:
-```bash
-./quantize models/original-model.gguf models/quantized-model.gguf q4_k_m
-```
+2. If still experiencing issues, you might need to try the Q4 version of the model if available
 
 ## Advanced Usage: Setting Up a Local Web Interface
 
@@ -122,12 +126,23 @@ make server
 
 2. Run the web interface:
 ```bash
-./server -m models/gemma2b-naturalfarmer.gguf --host 0.0.0.0 --port 8080
+./server -m models/llama-3.1-natural-farmer-q8_0.gguf --host 0.0.0.0 --port 8080
 ```
 
 3. Access through your browser at `http://localhost:8080`
 
 ## Troubleshooting
+
+- If you get "out of memory" errors:
+  - Reduce --ctx-size
+  - Close other apps
+  - Try reducing --threads
+- If the model loads but runs slowly:
+  - Experiment with different --threads values
+  - Ensure device isn't in power saving mode
+- For storage issues:
+  - Need at least 8GB free space for this model
+  - Consider clearing app cache/data
 
 - If you encounter permission errors, run: `chmod +x main`
 - For memory errors, try a more aggressive quantization format
