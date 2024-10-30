@@ -1,4 +1,7 @@
 # TinyLLamaFarmer
+
+![image](https://github.com/user-attachments/assets/7e82feec-44c5-401d-b1f2-c54fba6c02f9)
+
 // 5/4/24: Currently updated models are in alpha testing as of 5/4/24 //
 
 // 10/29/24: Models have reached beta testing and third party review. Additional models can be seen on your org hugging face hub /copyleftcultivars //
