@@ -61,7 +61,7 @@ To incorporate the advice in (B) into the guide (A), the following sections shou
 ### Part 2: Downloading the Model (Internet Access Required)
 
 1. Go to Hugging Face Hub (https://huggingface.co/join) and sign in or create a free account.
-2. Navigate to "CopyleftCultivars/llama-3.1-natural-farmer-Q8_0-GGUF."
+2. Navigate to ["CopyleftCultivars/llama-3.1-natural-farmer-Q8_0-GGUF."](https://huggingface.co/CopyleftCultivars/llama-3.1-natural-farmer-Q8_0-GGUF)
 3. Download the GGUF model file. You can download it directly on your phone through your browser to a known location like `Downloads`, or by using Termux to download it to a specific directory:
 
 **For Termux download:**
