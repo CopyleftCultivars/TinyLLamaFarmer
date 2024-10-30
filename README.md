@@ -18,59 +18,125 @@ We welcome contributions, PRs, and comments. We also encourage you to reach out 
 
 Consider supporting Copyleft Cultivars, a nonprofit, through Patreon. [LINK]
 
-## Setting Up MLC Chat with Copyleftcultivars/Gemma2B-NaturalFarmerV3 on Samsung Galaxy S23
+# Setting Up llama.cpp with Copyleftcultivars/Gemma2B-NaturalFarmerV3 on Android
 
-This guide will walk you through installing the MLC Chat demo app and replacing the pre-loaded Gemma2B model with the Copyleftcultivars/Gemma2B-NaturalFarmerV3 model from Hugging Face Hub (GGUF format) on your Samsung Galaxy S23.
+=This guide will walk you through installing llama.cpp and running the Copyleftcultivars/Gemma2B-NaturalFarmerV3 model from Hugging Face Hub on your Android device.
 
-**Requirements:**
+## Requirements:
 
-* Samsung Galaxy S23 with Snapdragon 8 Gen 2 chip
-* Computer with internet access
+- Android device with at least 6GB RAM (8GB+ recommended)
+- At least 4GB free storage space
+- Computer with internet access (optional)
 
-**Software:**
+## Software:
 
-* MLC Chat Demo APK (for Samsung S23) - Download link will be on MLC website: llm.mlc.ai
-* Hugging Face account (free) - Hugging Face Account: [https://huggingface.co/join](https://huggingface.co/join)
+- Termux (from F-Droid)
+- Hugging Face account (free) - https://huggingface.co/join
 
-**Part 1: Downloading the MLC Chat Demo APK and Gemma2B-NaturalFarmerV3 Model**
+## Part 1: Setting Up Termux and llama.cpp
 
-1. **Download MLC Chat Demo APK:** Visit the MLC LLM website ([https://github.com/mlc-ai/mlc-llm](https://github.com/mlc-ai/mlc-llm)) and navigate to the "Demos" section. Download the MLC Chat Demo APK specifically designed for Samsung S23 with Snapdragon 8 Gen 2 chip.
+1. Install F-Droid and Termux:
+   - Download F-Droid from f-droid.org
+   - Open F-Droid and search for "Termux"
+   - Install Termux through F-Droid
 
-2. **Download Gemma2B-NaturalFarmerV3 Model:**
-    * Go to Hugging Face Hub (Hugging Face Account: [https://huggingface.co/join](https://huggingface.co/join)) and sign in or create a free account.
-    * Search for the model named "Copyleftcultivars/Gemma2B-NaturalFarmerV3".
-    * Click on the model name and navigate to the "Files & Versions" tab.
-    * Download the model file in MLC LLM specific format (ensure it's compatible with MLC LLM).
+2. Set up the development environment:
+```bash
+pkg update
+pkg upgrade
+pkg install git make clang
+```
 
-**Part 2: Sideloading the MLC Chat Demo APK (Android requires enabling unknown sources)**
+3. Build llama.cpp:
+```bash
+git clone https://github.com/ggerganov/llama.cpp
+cd llama.cpp
+make LLAMA_NATIVE=1
+```
 
-1. **Enable Unknown Sources:** On your Galaxy S23, go to Settings > Security. Locate the option "Unknown Sources" and enable it (**Warning:** Only download APKs from trusted sources like MLC LLM).
+## Part 2: Downloading the Gemma2B-NaturalFarmerV3 Model
 
-2. **Transfer the APK:** Transfer the downloaded MLC Chat Demo APK from your computer to your Galaxy S23. You can use a cable connection or cloud storage services.
+1. Go to Hugging Face Hub (https://huggingface.co/join) and sign in or create a free account.
+2. Search for the model named "Copyleftcultivars/Gemma2B-NaturalFarmerV3"
+3. Click on the model name and navigate to the "Files & Versions" tab
+4. Download the GGUF version of the model
 
-3. **Install the APK:** Locate the downloaded APK on your phone's file manager app. Tap on the APK file and follow the on-screen instructions to complete the installation.
+If downloading directly through Termux:
+```bash
+cd ~/llama.cpp/models
+wget [GGUF_MODEL_URL]
+```
 
-**Part 3: Replacing Pre-loaded Gemma2B with Copyleftcultivars/Gemma2B-NaturalFarmerV3**
+## Part 3: Running the Model
 
-** (This part requires some technical knowledge)**
+1. Basic setup to run the model:
+```bash
+cd ~/llama.cpp
+./main -m models/gemma2b-naturalfarmer.gguf --temp 0.7 --ctx-size 2048 --threads 4
+```
 
-1. **Identify Model Storage Location:** 
- Unfortunately, the current MLC Chat demo doesn't have a built-in model management feature yet. You'll need to locate the directory where the pre-loaded Gemma2B model is stored on your phone.
+2. For interactive chat mode:
+```bash
+./main -m models/gemma2b-naturalfarmer.gguf --temp 0.7 --ctx-size 2048 --threads 4 --interactive
+```
 
-[STEPS TO LOCATE DIRECTORY IN SAMSUNG GALAXY S23 ULTRA]
+## Verify Model Installation
 
- Refer to the MLC LLM documentation ([https://llm.mlc.ai/](https://llm.mlc.ai/)) for troubleshooting tips on finding model storage locations. It might involve using file explorer apps that can access system directories.
+Launch the interactive mode and test the model by asking about IMO in the context of growing corn. If it answers regarding Indigenous Micro-Organisms, then you have successfully installed the correct Natural Farmer model. Good job! Enjoy!
 
-2. **Backup Existing Model (Optional):** It's recommended to create a backup copy of the existing Gemma2B model files before replacing them. 
+Example test prompt:
+```
+What is IMO in the context of growing corn?
+```
 
-3. **Copy Downloaded Model:** Copy the downloaded Copyleftcultivars/Gemma2B-NaturalFarmerV3 model (GGUF format) to the same directory where you found the pre-loaded Gemma2B model files.
+## Important Notes:
 
-4. **Verify Model Replacement:** Launch the MLC Chat app. There currently isn't a visual indicator within the app to confirm the model swap. The Model will show up on the list as the Gemma2B model, or may show the specific "NaturalFarmer" name. However, you can try interacting with the chat and see if the responses differ from the pre-loaded Gemma2B. A good test question is to explain IMO in the context of growing corn. If it answers regarding Indigenous Micro-Organisms, then you are successful and this is the correct Natural Farmer model. Good job! Enjoy!
+- This process is officially supported by llama.cpp and is regularly tested on Android devices
+- Monitor your device's temperature during extended use
+- Consider using a cooling solution for longer sessions
+- Keep your device plugged in when running the model
+- The model may take a few seconds to load and respond, depending on your device's capabilities
 
-**Important Notes:**
+## Optimizing Performance
 
-* This process involves modifying system files and might not be officially supported by MLC LLM. Proceed with caution and at your own risk.
-* Ensure the downloaded Copyleftcultivars/Gemma2B-NaturalFarmerV3 model is compatible with MLC LLM's format requirements. Incompatible models might not function correctly.
-* The MLC Chat app is still under development, and this method might change in future updates with official model management features.
+If you experience slow performance or memory issues:
 
-For troubleshooting or further assistance, refer to the MLC LLM documentation and GitHub repository ([https://github.com/mlc-ai/mlc-llm](https://github.com/mlc-ai/mlc-llm)) for support resources. You can also email CopyleftCultivars@gmail.com with any questions or feedback.
+1. Try adjusting these parameters:
+```bash
+--threads 2        # Reduce thread count
+--ctx-size 1024    # Reduce context size
+--batch-size 512   # Adjust batch size
+```
+
+2. Quantize the model for better performance:
+```bash
+./quantize models/original-model.gguf models/quantized-model.gguf q4_k_m
+```
+
+## Advanced Usage: Setting Up a Local Web Interface
+
+1. Build the server:
+```bash
+make server
+```
+
+2. Run the web interface:
+```bash
+./server -m models/gemma2b-naturalfarmer.gguf --host 0.0.0.0 --port 8080
+```
+
+3. Access through your browser at `http://localhost:8080`
+
+## Troubleshooting
+
+- If you encounter permission errors, run: `chmod +x main`
+- For memory errors, try a more aggressive quantization format
+- If the model loads but runs slowly, adjust the number of threads
+- For storage issues, ensure you have at least 4GB free space
+
+For troubleshooting or further assistance, you can:
+1. Check the llama.cpp GitHub repository
+2. Join the llama.cpp Discord community
+3. Email CopyleftCultivars@gmail.com with questions about the model specifically
+
+Consider supporting Copyleft Cultivars, a nonprofit, through our Patreon if you find this model useful. Our Patreon Supporter make this and many other projects possible! Thanks!
