@@ -117,7 +117,7 @@ If you experience performance issues:
 
 2. If still experiencing issues, you might need to try the Q4 version of the model if available
 
-## Advanced Usage: Setting Up a Local Web Interface
+## Optional usage customization: Setting Up a Local Web Interface
 
 1. Build the server:
 ```bash
@@ -130,6 +130,45 @@ make server
 ```
 
 3. Access through your browser at `http://localhost:8080`
+
+### Advanced User Interface Options:
+
+### (1) Basic Terminal Interface
+The default terminal interface through Termux looks like this:
+```
+$ ./main -m models/llama-3.1-natural-farmer-q8_0.gguf --interactive
+Model loaded. Interactive mode enabled.
+> What is IMO in farming?
+IMO (Indigenous Microorganisms) refers to beneficial microorganisms...
+> _
+```
+
+### (2) Setting Up the Web Interface (Optional)
+
+1. Build the web server:
+```bash
+cd ~/llama.cpp
+make server
+```
+
+2. Start the server:
+```bash
+./server -m models/llama-3.1-natural-farmer-q8_0.gguf --host 0.0.0.0 --port 8080
+```
+
+3. Access options:
+- On your phone: Open browser and go to `http://localhost:8080`
+- From other devices on your network: 
+  - Find your phone's IP: Run `ip addr show | grep inet` in Termux
+  - Access `http://[YOUR_PHONE_IP]:8080` from any device on your network
+
+The web interface provides:
+- Chat-style message history
+- Text input box with send button
+- Mobile-friendly design
+- Shareable access across your local network
+
+Note: Keep Termux running and your screen on while using either interface. For extended sessions, keep your device plugged in and in a well-ventilated area.
 
 ## Troubleshooting
 
