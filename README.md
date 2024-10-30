@@ -58,9 +58,7 @@ To incorporate the advice in (B) into the guide (A), the following sections shou
 
 ---
 
-### Part 2: Downloading the llama-3.1-natural-farmer Model (Should be done with internet access prior to when you intend to use the chatbot)
-
-**Update Step 3 as follows:**
+### Part 2: Downloading the Model (Internet Access Required)
 
 1. Go to Hugging Face Hub (https://huggingface.co/join) and sign in or create a free account.
 2. Navigate to "CopyleftCultivars/llama-3.1-natural-farmer-Q8_0-GGUF."
@@ -77,7 +75,7 @@ wget [GGUF_MODEL_URL] -O llama-3.1-natural-farmer.gguf
 
 ---
 
-### Part 3: Running the Model
+### Part 3: Running the Model (Offline)
 
 **Important**: Grant Termux access to external storage by running:
 ```bash
