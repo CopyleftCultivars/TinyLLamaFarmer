@@ -54,10 +54,6 @@ cd llama.cpp
 make LLAMA_NATIVE=1
 ```
 
-To incorporate the advice in (B) into the guide (A), the following sections should be updated:
-
----
-
 ### Part 2: Downloading the Model (Internet Access Required)
 
 1. Go to Hugging Face Hub (https://huggingface.co/join) and sign in or create a free account.
@@ -143,8 +139,15 @@ make server
 
 2. Run the web interface:
 ```bash
-./server -m models/llama-3.1-natural-farmer-q8_0.gguf --host 0.0.0.0 --port 8080
+cd ~/llama.cpp
+./main -m /path/to/your/model/llama-3.1-natural-farmer.gguf --temp 0.7 --ctx-size 4096 --threads 4
 ```
+
+Replace `/path/to/your/model/llama-3.1-natural-farmer.gguf` with the actual path where the model was saved, such as:
+
+- If downloaded to `llama.cpp/models`: `models/llama-3.1-natural-farmer.gguf`
+- If downloaded to `Downloads`: `/storage/emulated/0/Download/llama-3.1-natural-farmer.gguf`
+- If saved to a Termux directory: `~/storage/downloads/llama-3.1-natural-farmer.gguf`
 
 3. Access through your browser at `http://localhost:8080`
 
@@ -162,30 +165,45 @@ IMO (Indigenous Microorganisms) refers to beneficial microorganisms...
 
 ### (2) Setting Up the Web Interface (Optional)
 
-1. Build the web server:
-```bash
-cd ~/llama.cpp
-make server
-```
+To set up and run a local web server for llama.cpp, follow these steps:
 
-2. Start the server:
-```bash
-./server -m models/llama-3.1-natural-farmer-q8_0.gguf --host 0.0.0.0 --port 8080
-```
+#### Build the Web Server
+1. Open Termux and navigate to the `llama.cpp` directory:
+   ```bash
+   cd ~/llama.cpp
+   ```
+2. Compile the server:
+   ```bash
+   make server
+   ```
 
-3. Access options:
-- On your phone: Open browser and go to `http://localhost:8080`
-- From other devices on your network: 
-  - Find your phone's IP: Run `ip addr show | grep inet` in Termux
-  - Access `http://[YOUR_PHONE_IP]:8080` from any device on your network
+#### Start the Server
+1. Run the server with the model:
+   ```bash
+   ./server -m models/llama-3.1-natural-farmer-q8_0.gguf --host 0.0.0.0 --port 8080
+   ```
+   Replace `models/llama-3.1-natural-farmer_q8_0.gguf` with the correct path to the model file if it’s stored elsewhere.
 
-The web interface provides:
-- Chat-style message history
-- Text input box with send button
-- Mobile-friendly design
-- Shareable access across your local network
+#### Accessing the Web Interface
+1. **On your phone**: Open a web browser and go to [http://localhost:8080](http://localhost:8080).
+   
+2. **From other devices on your network**:
+   - Find your phone's IP address by running:
+     ```bash
+     ip addr show | grep inet
+     ```
+   - Look for your device’s IP (often under `wlan0`). Use this IP to access the interface from another device on the same network by visiting:
+     ```
+     http://[YOUR_PHONE_IP]:8080
+     ```
 
-Note: Keep Termux running and your screen on while using either interface. For extended sessions, keep your device plugged in and in a well-ventilated area.
+#### Web Interface Features
+- **Chat-style message history**
+- **Text input box with send button**
+- **Mobile-friendly design**
+- **Shareable access across your local network**
+
+> **Note**: Keep Termux running and your screen on while using the web interface. For longer sessions, it’s best to keep your device plugged in and in a well-ventilated area to prevent overheating.
 
 ## Troubleshooting
 
